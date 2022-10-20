@@ -1,0 +1,261 @@
+<!-- Presentado por: Danny Alberto Diaz Mage -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Order Form</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"/>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+      $(function () {
+        $("#datepicker").datepicker();
+      });
+    </script>
+    <script src="app.js"></script>
+  </head>
+
+  <body>
+    <form name="order" method="post" action="/submit">
+      <h1 id="h1title">Order Form</h1>
+      <fieldset class="contactdetails">
+        <legend>Contact Details</legend>
+        <ul class="ulcontact">
+          <li class="licontact">
+            <label class="required">
+              <div class="labelfield">Full Name</div>
+              <input class="contact" name="name" required autofocus />
+            </label>
+          </li>
+          <li class="licontact">
+            <label class="required">
+              <div class="labelfield">Email Address</div>
+              <input class="contact" type="email" name="email" required />
+            </label>
+          </li>
+          <li class="licontact">
+            <label>
+              <div class="labelfield">Postal Address</div>
+              <input class="contact" name="address1" placeholder="Address Line 1" />
+            </label>
+            <div>&nbsp;</div>
+            <input class="contact" name="address2" placeholder="Address Line 2" />
+            <div>&nbsp;</div>
+            <input name="city" class="city" placeholder="Town/City" />
+            <input name="state" class="state" placeholder="State" />
+            <input name="zip" class="zip" placeholder="Zip Code" />
+            <div>&nbsp;</div>
+            <select name="country">
+              <option value="0">Country</option>
+              <option value="US">United States</option>
+              <option value="CA">Canada</option>
+            </select>
+          </li>
+          <li class="licontact">
+            <label>
+              <div class="labelfield">Home Phone No.</div>
+              <input class="contact" type="tel" name="homephone" />
+            </label>
+          </li>
+          <li class="licontact">
+            <label>
+              <div class="labelfield">Cell Phone No.</div>
+              <input class="contact" type="tel" name="cellphone" />
+            </label>
+          </li>
+          <li class="licontact">
+            <label>
+              <div class="labelfield">Skype Name</div>
+              <input class="contact" name="skype" />
+            </label>
+          </li>
+          <li class="licontact">
+            <label>
+              <div class="labelfield">Twitter</div>
+              <span class="twitter_prefix">@</span>
+              <input class="twitter" name="twitter" class="twitter" />
+            </label>
+          </li>
+        </ul>
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend>Login Details</legend>
+        <ul class="ullogin">
+          <li class="lilogin">
+            <label class="required">
+              <div class="labellogin">Password</div>
+              <input class="inputlogin" type="password" name="password" required />
+            </label>
+          </li>
+          <br>
+          <li>
+            <label class="required">
+              <div class="labellogin">Confirm Password</div>
+              <input class="inputlogin" type="password" name="confirm_password" required />
+            </label>
+          </li>
+        </ul>
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend>Order Details</legend>
+        <table id="torder">
+          <thead>
+            <tr>
+              <th>Product Code</th>
+              <th>Description</th>
+              <th>Qty</th>
+              <th>Price</th>
+              <th>Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                COMP001
+                <input type="hidden" name="product_code" value="COMP001" />
+              </td>
+              <td>The Ultimate Smartphone</td>
+              <td>
+                <input
+                  type="number"
+                  data-price="399.99"
+                  name="quantity"
+                  value="0"
+                  min="0"
+                  max="99"
+                  maxlength="2"
+                />
+              </td>
+              <td>$399.99</td>
+              <td>
+                <output name="item_total" class="item_total">$0.00</output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                COMP002
+                <input type="hidden" name="product_code" value="COMP002" />
+              </td>
+              <td>The Ultimate Tablet</td>
+              <td>
+                <input
+                  type="number"
+                  data-price="499.99"
+                  name="quantity"
+                  value="0"
+                  min="0"
+                  max="99"
+                  maxlength="2"
+                />
+              </td>
+              <td>$499.99</td>
+              <td>
+                <output name="item_total" class="item_total">$0.00</output>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                COMP003
+                <input type="hidden" name="product_code" value="COMP003" />
+              </td>
+              <td>The Ultimate Netbook</td>
+              <td>
+                <input
+                  type="number"
+                  data-price="299.99"
+                  name="quantity"
+                  value="0"
+                  min="0"
+                  max="99"
+                  maxlength="2"
+                />
+              </td>
+              <td>$299.99</td>
+              <td>
+                <output name="item_total" class="item_total">$0.00</output>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="4">Order Total</td>
+              <td>
+                <output name="order_total" id="order_total">$0.00</output>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </fieldset>
+      <br>
+      <fieldset>
+        <legend>Payment Details</legend>
+        <ul class="ulpayment">
+          <li class="lipay">
+            <label class="required">
+              <div>Name on Card</div>
+              <input class="inputpay" name="card_name" required />
+            </label>
+          </li>
+          <li class="lipay">
+            <label class="required">
+              <div>Credit Card No.</div>
+              <input
+                class="inputpay"
+                name="card_number"
+                pattern="[0-9]{13,16}"
+                maxlength="16"
+                required
+                title="13-16 digits, no spaces"
+              />
+            </label>
+          </li>
+          <li class="lipay">
+            <label class="required">
+              <div>Expiry Date</div>
+              <input
+                class="inputpay"
+                type="month"
+                name="card_expiry"
+                maxlength="7"
+                placeholder="YYYY-MM"
+                required
+                value="2018-09"
+              />
+            </label>
+          </li>
+          <li class="lipay">
+            <label class="required">
+              <div>CVV2 No.</div>
+              <input
+                name="card_cvv2"
+                class="inputpay"
+                maxlength="3"
+                pattern="[0-9] {3}"
+                required
+                title="exactly 3 digits"
+              />
+              <br>
+              <span>(Three digit code at back of card)</span>
+            </label>
+          </li>
+        </ul>
+      </fieldset>
+      <br>
+      <div class="buttons">
+        <input type="submit" value="Submit Order" />
+        <input
+          type="submit"
+          id="saveOrder"
+          value="Save Order"
+          formnovalidate
+          formaction="/save"
+        />
+      </div>
+    </form>
+  </body>
+</html>
